@@ -1,0 +1,99 @@
+﻿<Window x:Class="Приемная_комиссия.Profile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:Приемная_комиссия"
+        mc:Ignorable="d" Icon="/graduation_hat_graduate_university_school_icon_193302.png"
+        Title="Профиль" Height="720" Width="1280">
+    <Window.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="#FFEBEBF3" Offset="0" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF09222E"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0 7"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="#FFEAEAEA"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#FF797878"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="23"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderThickness" Value="0, 0, 0, 2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10">
+            <TextBlock Text="Выход" VerticalAlignment="Center" Margin="0 0 30 0" DockPanel.Dock="Right" MouseDown="TextBlock_MouseDown_1"/>
+            <TextBlock Text="Редактировать профиль" VerticalAlignment="Center" DockPanel.Dock="Right" Margin="0 0 30 0" MouseDown="TextBlock_MouseDown"/>
+            <Image Source="/КАИ.png" Width="250" DockPanel.Dock="Left"/>
+            <TextBlock/>
+        </DockPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Width="200" Margin="10" x:Name="ph"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Фамилия: "/>
+                    <TextBlock x:Name="lastname" Text="Виктория" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Имя: "/>
+                    <TextBlock x:Name="firstname" Text="Виктория" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Отчество: "/>
+                    <TextBlock x:Name="fathname" Text="Виктория" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Дата рождения: "/>
+                    <TextBlock x:Name="hb" Text="Виктория" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Паспортные данные: "/>
+                    <TextBlock x:Name="pasp" Text="Виктория" FontWeight="Bold"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Баллы ЕГЭ: "/>
+                    <TextBlock x:Name="ege" Text="Виктория" FontWeight="Bold"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="15" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Click="Button_Click">
+                    <Button.Content>
+                        <TextBlock Text="Подать заявление" Margin="7"/>
+                    </Button.Content>
+                </Button>
+                <Button Click="Button_Click_1">
+                    <Button.Content>
+                        <TextBlock Text="Cписок заявлений" Margin="7"/>
+                    </Button.Content>
+                </Button>
+                <Button Click="Button_Click_2">
+                    <Button.Content>
+                        <TextBlock Text="Мои заявления" Margin="7"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

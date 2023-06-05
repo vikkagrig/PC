@@ -1,0 +1,116 @@
+﻿<Window x:Class="Приемная_комиссия.Reg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Приемная_комиссия"
+        mc:Ignorable="d" Icon="/graduation_hat_graduate_university_school_icon_193302.png"
+        Title="Регистрация" Height="720" Width="1280">
+    <Window.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="#FFEBEBF3" Offset="0" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF09222E"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="30 0"/>
+            <Setter Property="Background" Value="#FFEAEAEA"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#FF797878"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderThickness" Value="0, 0, 0, 2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0 0 5 0"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderThickness" Value="0, 0, 0, 2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="Foreground" Value="#FF797878"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderThickness" Value="0, 0, 0, 2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10">
+            <TextBlock Text="Назад" VerticalAlignment="Center" DockPanel.Dock="Right" Margin="0 0 30 0" MouseDown="TextBlock_MouseDown"/>
+            <Image Source="/КАИ.png" Width="250" DockPanel.Dock="Left"/>
+            <TextBlock/>
+        </DockPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+            <StackPanel.Effect>
+                <DropShadowEffect BlurRadius="70" Opacity="0.7" ShadowDepth="0"/>
+            </StackPanel.Effect>
+            <TextBox x:Name="log" Text="Введите логин" GotFocus="log_GotFocus" Margin="5 10 5 5"/>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBox x:Name="pas1" Width="480" Margin="0" Text="Придумайте пароль" GotFocus="pas1_GotFocus"/>
+                <PasswordBox x:Name="pas" Visibility="Hidden" Margin="0" Width="0"/>
+                <Image Source="/hide.png" Width="30" MouseDown="im1_MouseDown" x:Name="im1"/>
+                <Image Source="/show.png" Width="0" Visibility="Hidden" MouseDown="im2_MouseDown" x:Name="im2"/>
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBox x:Name="pas3" Width="480" Margin="0" Text="Повторите пароль" GotFocus="pas3_GotFocus"/>
+                <PasswordBox x:Name="pas2" Visibility="Hidden" Margin="0" Width="0"/>
+                <Image Source="/hide.png" Width="30" MouseDown="im3_MouseDown" x:Name="im3"/>
+                <Image Source="/show.png" Width="0" Visibility="Hidden" MouseDown="im4_MouseDown" x:Name="im4"/>
+            </StackPanel>
+            <TextBox x:Name="f" Text="Фамилия" GotFocus="f_GotFocus"/>
+            <TextBox x:Name="i" Text="Имя" GotFocus="i_GotFocus"/>
+            <TextBox x:Name="o" Text="Отчество" GotFocus="o_GotFocus"/>
+            <DatePicker x:Name="d" GotFocus="d_GotFocus" SelectedDateFormat="Short"/>
+            <TextBox x:Name="p" Text="Паспортные данные" GotFocus="p_GotFocus"/>
+            <TextBox x:Name="ege" Text="Сумма баллов ЕГЭ" GotFocus="ege_GotFocus"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="Button_Click" Margin="5 0 15 0" Background="White" BorderThickness="1">
+                    <Button.Content>
+                        <TextBlock Text="Выберите фото"/>
+                    </Button.Content>
+                </Button>
+                <TextBlock Margin="0 7" x:Name="photo"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="15" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Click="Button_Click_1">
+                    <Button.Content>
+                        <TextBlock Text="Зарегистрироваться"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

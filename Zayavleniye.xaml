@@ -1,0 +1,89 @@
+﻿<Window x:Class="Приемная_комиссия.Zayavleniye"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Приемная_комиссия"
+        mc:Ignorable="d" Icon="/graduation_hat_graduate_university_school_icon_193302.png"
+        Title="Заявление" Height="300" Width="450">
+    <Window.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="#FFEBEBF3" Offset="0" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF09222E"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="0 2"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="#FFEAEAEA"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="#FF09222E"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="0 3"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#FFEAEAEA"/>
+            <Setter Property="Width" Value="170"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Код специальности: "/>
+                <TextBlock x:Name="code" Text="Виктория" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Название: "/>
+                <TextBlock x:Name="name" Text="Виктория" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Бюджетные места: "/>
+                <TextBlock x:Name="b" Text="Виктория" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Платные места: "/>
+                <TextBlock x:Name="p" Text="Виктория" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Срок обучения: "/>
+                <TextBlock x:Name="sr" Text="Виктория" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Проходной балл: "/>
+                <TextBlock x:Name="ege" Text="Виктория" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Стоимость: "/>
+                <TextBlock x:Name="cost" Text="Виктория" FontWeight="Bold"/>
+            </StackPanel>
+            <ComboBox x:Name="prior" HorizontalAlignment="Left">
+                <ComboBoxItem  Tag="10" Content="Выберите приоритет" IsSelected="True"/>
+                <ComboBoxItem Content="1" Tag="1"/>
+                <ComboBoxItem Content="2" Tag="2"/>
+                <ComboBoxItem Content="3" Tag="3"/>
+            </ComboBox>
+            <ComboBox x:Name="form" HorizontalAlignment="Left">
+                <ComboBoxItem Content="Выберите форму обучения" IsSelected="True"/>
+                <ComboBoxItem Content="Бюджет"/>
+                <ComboBoxItem Content="Платная форма"/>
+            </ComboBox>
+            <Button Click="Button_Click">
+                <Button.Content>
+                    <TextBlock Text="Подать заявление" Margin="2"/>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

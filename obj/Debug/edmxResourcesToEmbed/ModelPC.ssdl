@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище PCModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Entrant">
+    <Key>
+      <PropertyRef Name="IDEntrant" />
+    </Key>
+    <Property Name="IDEntrant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDUser" Type="int" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateBirthday" Type="date" />
+    <Property Name="Point" Type="int" />
+    <Property Name="PersonalyData" Type="nvarchar" MaxLength="10" />
+    <Property Name="Photo" Type="image" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="IDFac" />
+    </Key>
+    <Property Name="IDFac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="List">
+    <Key>
+      <PropertyRef Name="IDList" />
+    </Key>
+    <Property Name="IDList" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDSpec" Type="int" />
+    <Property Name="IDEntrant" Type="int" />
+    <Property Name="FormStudy" Type="nvarchar" MaxLength="50" />
+    <Property Name="Priority" Type="int" />
+  </EntityType>
+  <EntityType Name="Spaciality">
+    <Key>
+      <PropertyRef Name="IDSpec" />
+    </Key>
+    <Property Name="IDSpec" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="12" />
+    <Property Name="IDFac" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="PlaceBudget" Type="int" />
+    <Property Name="PlaceCommerce" Type="int" />
+    <Property Name="Duration" Type="int" />
+    <Property Name="Mark" Type="int" />
+    <Property Name="Cost" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Entrant__IDUser__267ABA7A">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Entrant" Type="Self.Entrant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Entrant">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__List__IDEntrant__2F10007B">
+    <End Role="Entrant" Type="Self.Entrant" Multiplicity="0..1" />
+    <End Role="List" Type="Self.List" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entrant">
+        <PropertyRef Name="IDEntrant" />
+      </Principal>
+      <Dependent Role="List">
+        <PropertyRef Name="IDEntrant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__List__IDSpec__2E1BDC42">
+    <End Role="Spaciality" Type="Self.Spaciality" Multiplicity="0..1" />
+    <End Role="List" Type="Self.List" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spaciality">
+        <PropertyRef Name="IDSpec" />
+      </Principal>
+      <Dependent Role="List">
+        <PropertyRef Name="IDSpec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spacialit__IDFac__2B3F6F97">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Spaciality" Type="Self.Spaciality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="IDFac" />
+      </Principal>
+      <Dependent Role="Spaciality">
+        <PropertyRef Name="IDFac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище PCModelContainer">
+    <EntitySet Name="Entrant" EntityType="Self.Entrant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="List" EntityType="Self.List" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spaciality" EntityType="Self.Spaciality" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Entrant__IDUser__267ABA7A" Association="Self.FK__Entrant__IDUser__267ABA7A">
+      <End Role="User" EntitySet="User" />
+      <End Role="Entrant" EntitySet="Entrant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__List__IDEntrant__2F10007B" Association="Self.FK__List__IDEntrant__2F10007B">
+      <End Role="Entrant" EntitySet="Entrant" />
+      <End Role="List" EntitySet="List" />
+    </AssociationSet>
+    <AssociationSet Name="FK__List__IDSpec__2E1BDC42" Association="Self.FK__List__IDSpec__2E1BDC42">
+      <End Role="Spaciality" EntitySet="Spaciality" />
+      <End Role="List" EntitySet="List" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spacialit__IDFac__2B3F6F97" Association="Self.FK__Spacialit__IDFac__2B3F6F97">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Spaciality" EntitySet="Spaciality" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

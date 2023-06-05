@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище PC1ModelContainer" CdmEntityContainer="PC1Entities">
+    <EntitySetMapping Name="Entrant">
+      <EntityTypeMapping TypeName="PC1Model.Entrant">
+        <MappingFragment StoreEntitySet="Entrant">
+          <ScalarProperty Name="IDEntrant" ColumnName="IDEntrant" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="FatherNme" ColumnName="FatherNme" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="PersonalyData" ColumnName="PersonalyData" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faculty">
+      <EntityTypeMapping TypeName="PC1Model.Faculty">
+        <MappingFragment StoreEntitySet="Faculty">
+          <ScalarProperty Name="IDFac" ColumnName="IDFac" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="List">
+      <EntityTypeMapping TypeName="PC1Model.List">
+        <MappingFragment StoreEntitySet="List">
+          <ScalarProperty Name="IDList" ColumnName="IDList" />
+          <ScalarProperty Name="IDEntrant" ColumnName="IDEntrant" />
+          <ScalarProperty Name="IDSpec" ColumnName="IDSpec" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Speciality">
+      <EntityTypeMapping TypeName="PC1Model.Speciality">
+        <MappingFragment StoreEntitySet="Speciality">
+          <ScalarProperty Name="IDSpec" ColumnName="IDSpec" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="IDFac" ColumnName="IDFac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="PC1Model.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

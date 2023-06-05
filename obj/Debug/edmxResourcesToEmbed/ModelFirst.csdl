@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PC1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Entrant">
+    <Key>
+      <PropertyRef Name="IDEntrant" />
+    </Key>
+    <Property Name="IDEntrant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDUser" Type="Int32" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FatherNme" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Point" Type="Int32" Nullable="false" />
+    <Property Name="PersonalyData" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Entrant__IDUser__267ABA7A" FromRole="Entrant" ToRole="Users" />
+    <NavigationProperty Name="List" Relationship="Self.FK__List__IDEntrant__2E1BDC42" FromRole="Entrant" ToRole="List" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="IDFac" />
+    </Key>
+    <Property Name="IDFac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Speciality" Relationship="Self.FK__Specialit__IDFac__2B3F6F97" FromRole="Faculty" ToRole="Speciality" />
+  </EntityType>
+  <EntityType Name="List">
+    <Key>
+      <PropertyRef Name="IDList" />
+    </Key>
+    <Property Name="IDList" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDEntrant" Type="Int32" Nullable="false" />
+    <Property Name="IDSpec" Type="Int32" Nullable="false" />
+    <Property Name="Priority" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Entrant" Relationship="Self.FK__List__IDEntrant__2E1BDC42" FromRole="List" ToRole="Entrant" />
+    <NavigationProperty Name="Speciality" Relationship="Self.FK__List__IDSpec__2F10007B" FromRole="List" ToRole="Speciality" />
+  </EntityType>
+  <EntityType Name="Speciality">
+    <Key>
+      <PropertyRef Name="IDSpec" />
+    </Key>
+    <Property Name="IDSpec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="130" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Place" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDFac" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Faculty" Relationship="Self.FK__Specialit__IDFac__2B3F6F97" FromRole="Speciality" ToRole="Faculty" />
+    <NavigationProperty Name="List" Relationship="Self.FK__List__IDSpec__2F10007B" FromRole="Speciality" ToRole="List" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Entrant" Relationship="Self.FK__Entrant__IDUser__267ABA7A" FromRole="Users" ToRole="Entrant" />
+  </EntityType>
+  <Association Name="FK__Entrant__IDUser__267ABA7A">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Entrant" Type="Self.Entrant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Entrant">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__List__IDEntrant__2E1BDC42">
+    <End Role="Entrant" Type="Self.Entrant" Multiplicity="1" />
+    <End Role="List" Type="Self.List" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entrant">
+        <PropertyRef Name="IDEntrant" />
+      </Principal>
+      <Dependent Role="List">
+        <PropertyRef Name="IDEntrant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Specialit__IDFac__2B3F6F97">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+    <End Role="Speciality" Type="Self.Speciality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="IDFac" />
+      </Principal>
+      <Dependent Role="Speciality">
+        <PropertyRef Name="IDFac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__List__IDSpec__2F10007B">
+    <End Role="Speciality" Type="Self.Speciality" Multiplicity="1" />
+    <End Role="List" Type="Self.List" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Speciality">
+        <PropertyRef Name="IDSpec" />
+      </Principal>
+      <Dependent Role="List">
+        <PropertyRef Name="IDSpec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PC1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Entrant" EntityType="Self.Entrant" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" />
+    <EntitySet Name="List" EntityType="Self.List" />
+    <EntitySet Name="Speciality" EntityType="Self.Speciality" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK__Entrant__IDUser__267ABA7A" Association="Self.FK__Entrant__IDUser__267ABA7A">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Entrant" EntitySet="Entrant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__List__IDEntrant__2E1BDC42" Association="Self.FK__List__IDEntrant__2E1BDC42">
+      <End Role="Entrant" EntitySet="Entrant" />
+      <End Role="List" EntitySet="List" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Specialit__IDFac__2B3F6F97" Association="Self.FK__Specialit__IDFac__2B3F6F97">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Speciality" EntitySet="Speciality" />
+    </AssociationSet>
+    <AssociationSet Name="FK__List__IDSpec__2F10007B" Association="Self.FK__List__IDSpec__2F10007B">
+      <End Role="Speciality" EntitySet="Speciality" />
+      <End Role="List" EntitySet="List" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

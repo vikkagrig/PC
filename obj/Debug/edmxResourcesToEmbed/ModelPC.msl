@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище PCModelContainer" CdmEntityContainer="PCEntities">
+    <EntitySetMapping Name="Entrant">
+      <EntityTypeMapping TypeName="PCModel.Entrant">
+        <MappingFragment StoreEntitySet="Entrant">
+          <ScalarProperty Name="IDEntrant" ColumnName="IDEntrant" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="DateBirthday" ColumnName="DateBirthday" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="PersonalyData" ColumnName="PersonalyData" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faculty">
+      <EntityTypeMapping TypeName="PCModel.Faculty">
+        <MappingFragment StoreEntitySet="Faculty">
+          <ScalarProperty Name="IDFac" ColumnName="IDFac" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="List">
+      <EntityTypeMapping TypeName="PCModel.List">
+        <MappingFragment StoreEntitySet="List">
+          <ScalarProperty Name="IDList" ColumnName="IDList" />
+          <ScalarProperty Name="IDSpec" ColumnName="IDSpec" />
+          <ScalarProperty Name="IDEntrant" ColumnName="IDEntrant" />
+          <ScalarProperty Name="FormStudy" ColumnName="FormStudy" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Spaciality">
+      <EntityTypeMapping TypeName="PCModel.Spaciality">
+        <MappingFragment StoreEntitySet="Spaciality">
+          <ScalarProperty Name="IDSpec" ColumnName="IDSpec" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="IDFac" ColumnName="IDFac" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PlaceBudget" ColumnName="PlaceBudget" />
+          <ScalarProperty Name="PlaceCommerce" ColumnName="PlaceCommerce" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Mark" ColumnName="Mark" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="PCModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

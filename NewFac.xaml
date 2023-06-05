@@ -1,0 +1,66 @@
+﻿<Window x:Class="Приемная_комиссия.NewFac"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Приемная_комиссия"
+        mc:Ignorable="d" Icon="/graduation_hat_graduate_university_school_icon_193302.png"
+        Title="Новый факультет" Height="200" Width="250">
+    <Window.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="#FFEBEBF3" Offset="0" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF09222E"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="0 2"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="#FFEAEAEA"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="#FF09222E"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="0 3"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#FFEAEAEA"/>
+            <Setter Property="Width" Value="170"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#FF797878"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderThickness" Value="0, 0, 0, 2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox Text="Название" TextWrapping="Wrap" GotFocus="TextBox_GotFocus" x:Name="nam"/>
+            <TextBox TextWrapping="Wrap" Text="Описание" Height="60" GotFocus="TextBox_GotFocus_1" x:Name="des"/>
+            <Button Click="Button_Click">
+                <Button.Content>
+                    <TextBlock Text="Добавить" Margin="2"/>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

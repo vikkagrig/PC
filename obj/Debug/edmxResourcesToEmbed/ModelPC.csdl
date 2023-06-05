@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Entrant">
+    <Key>
+      <PropertyRef Name="IDEntrant" />
+    </Key>
+    <Property Name="IDEntrant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDUser" Type="Int32" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateBirthday" Type="DateTime" Precision="0" />
+    <Property Name="Point" Type="Int32" />
+    <Property Name="PersonalyData" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Entrant__IDUser__267ABA7A" FromRole="Entrant" ToRole="User" />
+    <NavigationProperty Name="List" Relationship="Self.FK__List__IDEntrant__2F10007B" FromRole="Entrant" ToRole="List" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="IDFac" />
+    </Key>
+    <Property Name="IDFac" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Spaciality" Relationship="Self.FK__Spacialit__IDFac__2B3F6F97" FromRole="Faculty" ToRole="Spaciality" />
+  </EntityType>
+  <EntityType Name="List">
+    <Key>
+      <PropertyRef Name="IDList" />
+    </Key>
+    <Property Name="IDList" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDSpec" Type="Int32" />
+    <Property Name="IDEntrant" Type="Int32" />
+    <Property Name="FormStudy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Priority" Type="Int32" />
+    <NavigationProperty Name="Entrant" Relationship="Self.FK__List__IDEntrant__2F10007B" FromRole="List" ToRole="Entrant" />
+    <NavigationProperty Name="Spaciality" Relationship="Self.FK__List__IDSpec__2E1BDC42" FromRole="List" ToRole="Spaciality" />
+  </EntityType>
+  <EntityType Name="Spaciality">
+    <Key>
+      <PropertyRef Name="IDSpec" />
+    </Key>
+    <Property Name="IDSpec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="IDFac" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PlaceBudget" Type="Int32" />
+    <Property Name="PlaceCommerce" Type="Int32" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="Mark" Type="Int32" />
+    <Property Name="Cost" Type="Int32" />
+    <NavigationProperty Name="Faculty" Relationship="Self.FK__Spacialit__IDFac__2B3F6F97" FromRole="Spaciality" ToRole="Faculty" />
+    <NavigationProperty Name="List" Relationship="Self.FK__List__IDSpec__2E1BDC42" FromRole="Spaciality" ToRole="List" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Entrant" Relationship="Self.FK__Entrant__IDUser__267ABA7A" FromRole="User" ToRole="Entrant" />
+  </EntityType>
+  <Association Name="FK__Entrant__IDUser__267ABA7A">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Entrant" Type="Self.Entrant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Entrant">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__List__IDEntrant__2F10007B">
+    <End Role="Entrant" Type="Self.Entrant" Multiplicity="0..1" />
+    <End Role="List" Type="Self.List" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entrant">
+        <PropertyRef Name="IDEntrant" />
+      </Principal>
+      <Dependent Role="List">
+        <PropertyRef Name="IDEntrant" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spacialit__IDFac__2B3F6F97">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Spaciality" Type="Self.Spaciality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="IDFac" />
+      </Principal>
+      <Dependent Role="Spaciality">
+        <PropertyRef Name="IDFac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__List__IDSpec__2E1BDC42">
+    <End Role="Spaciality" Type="Self.Spaciality" Multiplicity="0..1" />
+    <End Role="List" Type="Self.List" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spaciality">
+        <PropertyRef Name="IDSpec" />
+      </Principal>
+      <Dependent Role="List">
+        <PropertyRef Name="IDSpec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Entrant" EntityType="Self.Entrant" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" />
+    <EntitySet Name="List" EntityType="Self.List" />
+    <EntitySet Name="Spaciality" EntityType="Self.Spaciality" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK__Entrant__IDUser__267ABA7A" Association="Self.FK__Entrant__IDUser__267ABA7A">
+      <End Role="User" EntitySet="User" />
+      <End Role="Entrant" EntitySet="Entrant" />
+    </AssociationSet>
+    <AssociationSet Name="FK__List__IDEntrant__2F10007B" Association="Self.FK__List__IDEntrant__2F10007B">
+      <End Role="Entrant" EntitySet="Entrant" />
+      <End Role="List" EntitySet="List" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spacialit__IDFac__2B3F6F97" Association="Self.FK__Spacialit__IDFac__2B3F6F97">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Spaciality" EntitySet="Spaciality" />
+    </AssociationSet>
+    <AssociationSet Name="FK__List__IDSpec__2E1BDC42" Association="Self.FK__List__IDSpec__2E1BDC42">
+      <End Role="Spaciality" EntitySet="Spaciality" />
+      <End Role="List" EntitySet="List" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
