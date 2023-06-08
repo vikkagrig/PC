@@ -38,7 +38,7 @@ namespace Приемная_комиссия
 
         public void NewData()
         {
-            using (PCEntities db = new PCEntities())
+            using (PCEntities1 db = new PCEntities1())
             {
                 foreach (var e in db.Entrant)
                 {

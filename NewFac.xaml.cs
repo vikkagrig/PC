@@ -31,9 +31,9 @@ namespace Приемная_комиссия
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            using(PCEntities db = new PCEntities())
+            using(PCEntities1 db = new PCEntities1())
             {
-                if (nam.Text != "" && nam.Text != "Название" && des.Text != "" && des.Text != "Описание")
+                if (nam.Text.Trim() != "" && nam.Text != "Название" && des.Text.Trim() != "" && des.Text != "Описание")
                 {
                     Faculty faculty = new Faculty()
                     {

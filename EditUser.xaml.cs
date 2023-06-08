@@ -35,9 +35,9 @@ namespace Приемная_комиссия
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (l.Text != "" && p.Text != "")
+            if (l.Text.Trim() != "" && p.Text.Trim() != "")
             {
-                using (PCEntities db = new PCEntities())
+                using (PCEntities1 db = new PCEntities1())
                 {
                     User u = null;
                     foreach (var us in db.User)
@@ -65,7 +65,7 @@ namespace Приемная_комиссия
             MessageBoxResult r = (MessageBoxResult)System.Windows.MessageBox.Show("Вы точно хотите удалить этого пользователя?", "Уведомление", (MessageBoxButton)(MessageBoxButtons)MessageBoxButton.YesNo);
             if (r == MessageBoxResult.Yes)
             {
-                using (PCEntities db = new PCEntities())
+                using (PCEntities1 db = new PCEntities1())
                 {
                     User u = null;
                     Entrant entrant = null;

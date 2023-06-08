@@ -105,31 +105,31 @@
       <DependentUpon>EditUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entrant.cs">
-      <DependentUpon>ModelPC.tt</DependentUpon>
+      <DependentUpon>ModelPC1.tt</DependentUpon>
     </Compile>
     <Compile Include="Faculty.cs">
-      <DependentUpon>ModelPC.tt</DependentUpon>
+      <DependentUpon>ModelPC1.tt</DependentUpon>
     </Compile>
     <Compile Include="Gost.xaml.cs">
       <DependentUpon>Gost.xaml</DependentUpon>
     </Compile>
     <Compile Include="List.cs">
-      <DependentUpon>ModelPC.tt</DependentUpon>
+      <DependentUpon>ModelPC1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelPC.Context.cs">
+    <Compile Include="ModelPC1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelPC.Context.tt</DependentUpon>
+      <DependentUpon>ModelPC1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelPC.cs">
+    <Compile Include="ModelPC1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelPC.tt</DependentUpon>
+      <DependentUpon>ModelPC1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelPC.Designer.cs">
+    <Compile Include="ModelPC1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelPC.edmx</DependentUpon>
+      <DependentUpon>ModelPC1.edmx</DependentUpon>
     </Compile>
     <Compile Include="My.xaml.cs">
       <DependentUpon>My.xaml</DependentUpon>
@@ -150,7 +150,7 @@
       <DependentUpon>Reg.xaml</DependentUpon>
     </Compile>
     <Compile Include="Spaciality.cs">
-      <DependentUpon>ModelPC.tt</DependentUpon>
+      <DependentUpon>ModelPC1.tt</DependentUpon>
     </Compile>
     <Compile Include="Spec.xaml.cs">
       <DependentUpon>Spec.xaml</DependentUpon>
@@ -159,7 +159,7 @@
       <DependentUpon>Spiski.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>ModelPC.tt</DependentUpon>
+      <DependentUpon>ModelPC1.tt</DependentUpon>
     </Compile>
     <Compile Include="Zayavleniye.xaml.cs">
       <DependentUpon>Zayavleniye.xaml</DependentUpon>
@@ -263,12 +263,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="ModelPC.edmx">
+    <EntityDeploy Include="ModelPC1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelPC.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelPC1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModelPC.edmx.diagram">
-      <DependentUpon>ModelPC.edmx</DependentUpon>
+    <None Include="ModelPC1.edmx.diagram">
+      <DependentUpon>ModelPC1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -305,20 +305,20 @@
     <Resource Include="hide.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ModelPC1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPC1.edmx</DependentUpon>
+      <LastGenOutput>ModelPC1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelPC1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPC1.edmx</DependentUpon>
+      <LastGenOutput>ModelPC1.cs</LastGenOutput>
+    </Content>
     <Resource Include="paper_folded_icon_246286.png" />
     <Resource Include="graduation_hat_graduate_university_school_icon_193302.png" />
     <Resource Include="4105929-bag-briefcase-case-work_113915.png" />
     <Resource Include="account_member_profile_people_avatar_personal_user_icon_219331.png" />
-    <Content Include="ModelPC.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelPC.edmx</DependentUpon>
-      <LastGenOutput>ModelPC.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelPC.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelPC.edmx</DependentUpon>
-      <LastGenOutput>ModelPC.cs</LastGenOutput>
-    </Content>
     <Resource Include="Дворовые игры Ханна — копия.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

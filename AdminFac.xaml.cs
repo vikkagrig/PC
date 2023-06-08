@@ -46,7 +46,7 @@ namespace Приемная_комиссия
         {
             int n = 0;
             table.Items.Clear();
-            using(var db = new PCEntities())
+            using(var db = new PCEntities1())
             {
                 foreach(var f in db.Faculty)
                 {

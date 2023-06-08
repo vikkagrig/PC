@@ -29,7 +29,7 @@ namespace Приемная_комиссия
             InitializeComponent();
             this.user = user;
             this.profile = pr;
-            using (PCEntities db = new PCEntities())
+            using (PCEntities1 db = new PCEntities1())
             {
                 foreach (var e in db.Entrant)
                 {
@@ -69,7 +69,7 @@ namespace Приемная_комиссия
             if(photo.Text == "Успешно загружено")
             {
                 Entrant entrant = null;
-                using (var db = new PCEntities())
+                using (var db = new PCEntities1())
                 {
                     foreach (var en in db.Entrant)
                     {
@@ -79,28 +79,42 @@ namespace Приемная_комиссия
                             break;
                         }
                     }
-                    if (d.SelectedDate < DateTime.ParseExact("01.01.2010".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture) && d.SelectedDate > DateTime.ParseExact("01.01.1923".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture))
-                    {
-                        entrant.LastName = f.Text;
-                        entrant.FirstName = i.Text;
-                        entrant.FatherName = o.Text;
-                        entrant.DateBirthday = d.SelectedDate;
-                        entrant.PersonalyData = p.Text;
-                        entrant.Point = int.Parse(ege.Text);
-                        entrant.Photo = im;
-                        db.SaveChanges();
-                        MessageBox.Show("Успешно изменено");
+                    if(f.Text.Trim() != "" && i.Text.Trim() != "" && o.Text.Trim() != "" && p.Text.Trim() != "" && ege.Text.Trim() != "" && int.Parse(ege.Text.Trim()) > 0 && int.Parse(ege.Text.Trim()) < 500)
+                    { 
+                        try
+                        {
+                            if (d.SelectedDate < DateTime.ParseExact("01.01.2010".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture) && d.SelectedDate > DateTime.ParseExact("01.01.1923".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture))
+                            {
+                                entrant.LastName = f.Text;
+                                entrant.FirstName = i.Text;
+                                entrant.FatherName = o.Text;
+                                entrant.DateBirthday = d.SelectedDate;
+                                entrant.PersonalyData = p.Text;
+                                entrant.Point = int.Parse(ege.Text);
+                                entrant.Photo = im;
+                                db.SaveChanges();
+                                MessageBox.Show("Успешно изменено");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Неверная дата рождения");
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Неверно введены данные");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Неверная дата рождения");
+                        MessageBox.Show("Неверно введены данные");
                     }
                 }
             }
             else
             {
                 Entrant entrant = null;
-                using (var db = new PCEntities())
+                using (var db = new PCEntities1())
                 {
                     foreach (var en in db.Entrant)
                     {
@@ -110,20 +124,34 @@ namespace Приемная_комиссия
                             break;
                         }
                     }
-                    if (d.SelectedDate < DateTime.ParseExact("01.01.2010".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture) && d.SelectedDate > DateTime.ParseExact("01.01.1923".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture))
+                    if (f.Text.Trim() != "" && i.Text.Trim() != "" && o.Text.Trim() != "" && p.Text.Trim() != "" && ege.Text.Trim() != "" && int.Parse(ege.Text.Trim()) > 0 && int.Parse(ege.Text.Trim()) < 500)
                     {
-                        entrant.LastName = f.Text;
-                        entrant.FirstName = i.Text;
-                        entrant.FatherName = o.Text;
-                        entrant.DateBirthday = d.SelectedDate;
-                        entrant.PersonalyData = p.Text;
-                        entrant.Point = int.Parse(ege.Text);
-                        db.SaveChanges();
-                        MessageBox.Show("Успешно изменено");
+                        try
+                        {
+                            if (d.SelectedDate < DateTime.ParseExact("01.01.2010".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture) && d.SelectedDate > DateTime.ParseExact("01.01.1923".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture))
+                            {
+                                entrant.LastName = f.Text;
+                                entrant.FirstName = i.Text;
+                                entrant.FatherName = o.Text;
+                                entrant.DateBirthday = d.SelectedDate;
+                                entrant.PersonalyData = p.Text;
+                                entrant.Point = int.Parse(ege.Text);
+                                db.SaveChanges();
+                                MessageBox.Show("Успешно изменено");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Неверная дата рождения");
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Неверно введены данные");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Неверная дата рождения");
+                        MessageBox.Show("Неверно введены данные");
                     }
                 }
             }

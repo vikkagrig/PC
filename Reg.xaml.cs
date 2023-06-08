@@ -210,7 +210,67 @@ namespace Приемная_комиссия
                 pas.Focus();
             }
         }
-
+        public bool AddUser(User user)
+        {
+            using(var db = new PCEntities1())
+            {
+                    db.User.Add(user);
+                    db.SaveChanges();
+                    return true;
+            }
+        }
+        public bool DeleteUser(Entrant user)
+        {
+            Entrant u1 = null;
+            using (var db = new PCEntities1())
+            {
+                foreach (var u in db.Entrant)
+                {
+                    if(u.IDEntrant == user.IDEntrant)
+                    {
+                        u1 = db.Entrant.Find(u.IDEntrant);
+                        break;
+                    }
+                }
+                db.Entrant.Remove(u1);
+                db.SaveChanges();
+                return true;
+            }
+        }
+        public bool UpdateUser(Entrant user)
+        {
+            Entrant u1 = null;
+            using (var db = new PCEntities1())
+            {
+                foreach (var u in db.Entrant)
+                {
+                    if (u.IDEntrant == user.IDEntrant)
+                    {
+                        u1 = db.Entrant.Find(u.IDEntrant);
+                        break;
+                    }
+                }
+                u1.Point = 300;
+                db.SaveChanges();
+                return true;
+            }
+        }
+        public Entrant EnterUser(int id)
+        {
+            Entrant u1 = null;
+            using (var db = new PCEntities1())
+            {
+                foreach (var u in db.Entrant)
+                {
+                    if (u.IDEntrant == id)
+                    {
+                        u1 = db.Entrant.Find(u.IDEntrant);
+                        break;
+                    }
+                }
+                return u1;
+            }
+        }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if (pas.Visibility == Visibility.Hidden)
@@ -221,43 +281,50 @@ namespace Приемная_комиссия
             {
                 pas2.Password = pas3.Text;
             }
-            if(log.Text != "" && log.Text != "Введите логин" && pas.Password != "" && pas2.Password != "" && f.Text != "" && f.Text != "Фамилия" && i.Text != "" &&
-                    i.Text != "Имя" && o.Text != "" && o.Text != "Отчество" && d.SelectedDate != null && p.Text != "" && p.Text != "Паспортные данные" && ege.Text != ""
-                    && ege.Text != "Сумма баллов ЕГЭ" && im != null)
+            if(log.Text.Trim() != "" && log.Text != "Введите логин" && pas.Password.Trim() != "" && pas2.Password.Trim() != "" && f.Text.Trim() != "" && f.Text != "Фамилия" && i.Text.Trim() != "" &&
+                    i.Text.Trim() != "Имя" && o.Text.Trim() != "" && o.Text != "Отчество" && d.SelectedDate != null && p.Text.Trim() != "" && p.Text != "Паспортные данные" && ege.Text.Trim() != ""
+                    && ege.Text != "Сумма баллов ЕГЭ" && im != null && int.Parse(ege.Text.Trim()) > 0 && int.Parse(ege.Text.Trim()) < 500)
             {
                  if(pas.Password == pas2.Password)
                  {
                      if(d.SelectedDate < DateTime.ParseExact("01.01.2010".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture) && d.SelectedDate > DateTime.ParseExact("01.01.1923".ToString(), "dd.mm.yyyy", System.Globalization.CultureInfo.InvariantCulture))
                      {
-                         using(PCEntities db = new PCEntities())
-                         {
-                             User user = new User()
-                             {
-                                 Login = log.Text,
-                                 Password = pas.Password,
-                                 Role = "Абитуриент"
-                             };
-                             db.User.Add(user);
-                             db.SaveChanges();
-                             Entrant entrant = new Entrant()
-                             {
-                                 User = user,
-                                 LastName = f.Text,
-                                 FirstName = i.Text,
-                                 FatherName = o.Text,
-                                 DateBirthday = d.SelectedDate,
-                                 PersonalyData = p.Text,
-                                 Point = int.Parse(ege.Text),
-                                 Photo = im,
-                                 IDUser = user.IDUser
-                             };
-                             db.Entrant.Add(entrant);
-                             db.SaveChanges();
-                             MessageBox.Show("Пользователь успешно зарегистрирован");
-                             MainWindow mainWindow = new MainWindow();
-                             mainWindow.Show();
-                             this.Close();
+                        try
+                        {
+                            using (PCEntities1 db = new PCEntities1())
+                            {
+                                User user = new User()
+                                {
+                                    Login = log.Text.Trim(),
+                                    Password = pas.Password.Trim(),
+                                    Role = "Абитуриент"
+                                };
+                                db.User.Add(user);
+                                db.SaveChanges();
+                                Entrant entrant = new Entrant()
+                                {
+                                    User = user,
+                                    LastName = f.Text.Trim(),
+                                    FirstName = i.Text.Trim(),
+                                    FatherName = o.Text.Trim(),
+                                    DateBirthday = d.SelectedDate,
+                                    PersonalyData = p.Text.Trim(),
+                                    Point = int.Parse(ege.Text.Trim()),
+                                    Photo = im,
+                                    IDUser = user.IDUser
+                                };
+                                db.Entrant.Add(entrant);
+                                db.SaveChanges();
+                                MessageBox.Show("Пользователь успешно зарегистрирован");
+                                MainWindow mainWindow = new MainWindow();
+                                mainWindow.Show();
+                                this.Close();
+                            }
                          }
+                        catch
+                        {
+                            MessageBox.Show("Неверно введены данные");
+                        }
                      }
                      else
                      {

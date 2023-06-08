@@ -52,7 +52,7 @@ namespace Приемная_комиссия
             }
             if (log.Text != "" && log.Text != "Логин" && pas.Password != "")
             {
-                using (PCEntities db = new PCEntities())
+                using (PCEntities1 db = new PCEntities1())
                 {
                     foreach (User user in db.User)
                     {

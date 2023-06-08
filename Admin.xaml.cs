@@ -24,7 +24,7 @@ namespace Приемная_комиссия
         {
             InitializeComponent();
             this.user = user;
-            using(PCEntities db = new PCEntities())
+            using(PCEntities1 db = new PCEntities1())
             {
                 foreach(var u in db.User)
                 {

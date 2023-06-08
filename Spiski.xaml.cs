@@ -34,7 +34,7 @@ namespace Приемная_комиссия
             InitializeComponent();
             this.user = user;
             this.profile = profile;
-            using (PCEntities db = new PCEntities())
+            using (PCEntities1 db = new PCEntities1())
             {
                 foreach (var i in db.Entrant)
                 {
@@ -64,7 +64,7 @@ namespace Приемная_комиссия
             spec.Items.Clear();
             spec.SelectedIndex = -1;
             form.SelectedIndex = -1;
-            using (PCEntities db = new PCEntities())
+            using (PCEntities1 db = new PCEntities1())
             {
                 Faculty faculty = null;
                 foreach(var f in db.Faculty)
@@ -96,7 +96,7 @@ namespace Приемная_комиссия
             int n = 0;
             if (form.SelectedIndex == 0)
             {
-                using(PCEntities db = new PCEntities())
+                using(PCEntities1 db = new PCEntities1())
                 {
                     Spaciality spaciality = null;
                     foreach(var sp in db.Spaciality)
@@ -120,7 +120,7 @@ namespace Приемная_комиссия
             }
             else if (form.SelectedIndex == 1)
             {
-                using (PCEntities db = new PCEntities())
+                using (PCEntities1 db = new PCEntities1())
                 {
                     Spaciality spaciality = null;
                     foreach (var sp in db.Spaciality)

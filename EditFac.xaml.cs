@@ -38,7 +38,7 @@ namespace Приемная_комиссия
             MessageBoxResult r = (MessageBoxResult)System.Windows.MessageBox.Show("Вы точно хотите удалить этот факультет?", "Уведомление", (MessageBoxButton)(MessageBoxButtons)MessageBoxButton.YesNo);
             if (r == MessageBoxResult.Yes)
             {
-                using (PCEntities db = new PCEntities())
+                using (PCEntities1 db = new PCEntities1())
                 {
                     Faculty f = null;
                     foreach (var en in db.Faculty)
@@ -78,9 +78,9 @@ namespace Приемная_комиссия
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (nam.Text != "" && des.Text != "")
+            if (nam.Text.Trim() != "" && des.Text.Trim() != "")
             {
-                using (PCEntities db = new PCEntities())
+                using (PCEntities1 db = new PCEntities1())
                 {
                     Faculty f = null;
                     foreach (var en in db.Faculty)
@@ -94,7 +94,7 @@ namespace Приемная_комиссия
                     f.Name = nam.Text;
                     f.Description = des.Text;
                     db.SaveChanges();
-                    System.Windows.MessageBox.Show("Сохранено");
+                    MessageBox.Show("Сохранено");
                     admin.NewData();
                     this.Close();
                 }

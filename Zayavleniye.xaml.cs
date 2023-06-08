@@ -34,7 +34,7 @@ namespace Приемная_комиссия
             sr.Text = testData.Column5.ToString();
             ege.Text = testData.Column6.ToString();
             cost.Text = testData.Column7.ToString();
-            using(PCEntities db = new PCEntities())
+            using(PCEntities1 db = new PCEntities1())
             {
                 foreach(var i in db.Entrant)
                 {
@@ -78,7 +78,7 @@ namespace Приемная_комиссия
             else
             {
                 bool flag = true;
-                using(PCEntities db = new PCEntities())
+                using(PCEntities1 db = new PCEntities1())
                 {
                     int id = 0;
                     foreach(var i in db.Spaciality)

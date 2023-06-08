@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("modelpc.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("modelpc.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("modelpc1.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("modelpc1.tt")]
 
 

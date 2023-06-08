@@ -40,9 +40,11 @@ namespace Приемная_комиссия
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (code.Text != "" && name.Text != "" && but.Text != "" && comm.Text != "" && dur.Text != "" && mark.Text != "" && cost.Text != "")
+            if (code.Text.Trim() != "" && name.Text.Trim() != "" && but.Text.Trim() != "" && comm.Text.Trim() != "" && dur.Text.Trim() != "" && mark.Text.Trim() != "" && 
+                cost.Text.Trim() != "" && int.Parse(but.Text.Trim()) > 0 && int.Parse(but.Text.Trim()) < 10000 && int.Parse(comm.Text.Trim()) > 0 && 
+                int.Parse(comm.Text.Trim()) < 1000 && int.Parse(dur.Text.Trim()) > 0 && int.Parse(dur.Text.Trim()) < 50 && int.Parse(mark.Text.Trim()) > 0 && int.Parse(mark.Text.Trim()) < 500 && int.Parse(cost.Text.Trim()) > 0)
             {
-                using (PCEntities db = new PCEntities())
+                using (PCEntities1 db = new PCEntities1())
                 {
                     Spaciality sp = null;
                     foreach (var s in db.Spaciality)
@@ -52,18 +54,25 @@ namespace Приемная_комиссия
                             sp = db.Spaciality.Find(s.IDSpec);
                             break;
                         }
+                    } 
+                    try
+                    {
+                        sp.Code = code.Text;
+                        sp.Name = name.Text;
+                        sp.PlaceBudget = int.Parse(but.Text);
+                        sp.PlaceCommerce = int.Parse(comm.Text);
+                        sp.Duration = int.Parse(dur.Text);
+                        sp.Mark = int.Parse(mark.Text);
+                        sp.Cost = int.Parse(cost.Text);
+                        db.SaveChanges();
+                        System.Windows.MessageBox.Show("Сохранено");
+                        adminSpec.NewSpec(adminSpec.inst.SelectedIndex);
+                        this.Close();
                     }
-                    sp.Code = code.Text;
-                    sp.Name = name.Text;
-                    sp.PlaceBudget = int.Parse(but.Text);
-                    sp.PlaceCommerce = int.Parse(comm.Text);
-                    sp.Duration = int.Parse(dur.Text);
-                    sp.Mark = int.Parse(mark.Text);
-                    sp.Cost = int.Parse(cost.Text);
-                    db.SaveChanges();
-                    System.Windows.MessageBox.Show("Сохранено");
-                    adminSpec.NewSpec(adminSpec.inst.SelectedIndex);
-                    this.Close();
+                    catch
+                    {
+                        MessageBox.Show("Неверно введены данные");
+                    }
                 }
             }
             else
@@ -75,7 +84,7 @@ namespace Приемная_комиссия
             MessageBoxResult r = (MessageBoxResult)System.Windows.MessageBox.Show("Вы точно хотите удалить эту специальность?", "Уведомление", (MessageBoxButton)(MessageBoxButtons)MessageBoxButton.YesNo);
             if (r == MessageBoxResult.Yes)
             {
-                using (PCEntities db = new PCEntities())
+                using (PCEntities1 db = new PCEntities1())
                 {
                     Spaciality spfrdlt = null;
                     foreach (var sp in db.Spaciality)

@@ -36,7 +36,7 @@ namespace Приемная_комиссия
         {
             InitializeComponent();
             this.user = user;
-            using (var db = new PCEntities())
+            using (var db = new PCEntities1())
             {
                 foreach (var n in db.Entrant)
                 {
@@ -53,7 +53,7 @@ namespace Приемная_комиссия
         public void NewTable()
         {
             table.Items.Clear();
-            using(PCEntities db = new PCEntities())
+            using(PCEntities1 db = new PCEntities1())
             {
                 foreach (var item in db.List)
                 {
@@ -87,7 +87,7 @@ namespace Приемная_комиссия
                 MessageBoxResult r = (MessageBoxResult)MessageBox.Show("Вы точно хотите удалить это заявление?", "Уведомление", (MessageBoxButtons)MessageBoxButton.YesNo);
                 if(r == MessageBoxResult.Yes) 
                 {
-                    using(PCEntities db = new PCEntities())
+                    using(PCEntities1 db = new PCEntities1())
                     {
                         List list = null;
                         foreach(var i in db.List)

@@ -22,7 +22,7 @@ namespace Приемная_комиссия
         public Gost()
         {
             InitializeComponent();
-            using (PCEntities db = new PCEntities())
+            using (PCEntities1 db = new PCEntities1())
             {
                 for (int i = 0; i < db.Faculty.Count(); i++)
                 {
@@ -37,7 +37,7 @@ namespace Приемная_комиссия
             int n = 0;
             table.Items.Clear();
             int index = inst.SelectedIndex;
-            using (var db = new PCEntities())
+            using (var db = new PCEntities1())
             {
                 foreach (var item in db.Spaciality)
                 {

@@ -80,7 +80,7 @@
             <TextBox x:Name="f" Text="Фамилия" Margin="5 10 5 5"/>
             <TextBox x:Name="i" Text="Имя" />
             <TextBox x:Name="o" Text="Отчество" />
-            <DatePicker x:Name="d" SelectedDateFormat="Short"/>
+            <DatePicker x:Name="d" SelectedDateFormat="Short" DisplayDate="01.01.2005"/>
             <TextBox x:Name="p" Text="Паспортные данные" />
             <TextBox x:Name="ege" Text="Сумма баллов ЕГЭ"/>
             <StackPanel Orientation="Horizontal">
