@@ -163,5 +163,29 @@ namespace Приемная_комиссия
             profile.Visibility = Visibility.Visible;
             this.Close();
         }
+
+        private void f_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ege_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void f_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

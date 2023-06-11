@@ -112,5 +112,34 @@ namespace Приемная_комиссия
                 }
             }
         }
+
+        private void code_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void name_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void code_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void code_PreviewTextInput_1(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "0123456789.".IndexOf(e.Text) < 0;
+        }
     }
 }

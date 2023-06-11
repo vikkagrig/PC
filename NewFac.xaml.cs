@@ -31,23 +31,37 @@ namespace Приемная_комиссия
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            using(PCEntities1 db = new PCEntities1())
+            try
             {
-                if (nam.Text.Trim() != "" && nam.Text != "Название" && des.Text.Trim() != "" && des.Text != "Описание")
+                using (PCEntities1 db = new PCEntities1())
                 {
-                    Faculty faculty = new Faculty()
+                    if (nam.Text.Trim() != "" && nam.Text != "Название" && des.Text.Trim() != "" && des.Text != "Описание")
                     {
-                        Name = nam.Text,
-                        Description = des.Text
-                    };
-                    db.Faculty.Add(faculty);
-                    db.SaveChanges();
-                    MessageBox.Show("Успешно добавлено");
-                    admin.NewData();
-                    this.Close();
+                        try
+                        {
+                            Faculty faculty = new Faculty()
+                            {
+                                Name = nam.Text,
+                                Description = des.Text
+                            };
+                            db.Faculty.Add(faculty);
+                            db.SaveChanges();
+                            MessageBox.Show("Успешно добавлено");
+                            admin.NewData();
+                            this.Close();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Неверно введены данные");
+                        }
+                    }
+                    else
+                        MessageBox.Show("Не все поля заполнены");
                 }
-                else
-                    MessageBox.Show("Не все поля заполнены");
+            }
+            catch
+            {
+                MessageBox.Show("Не все поля заполнены");
             }
         }
 
@@ -58,6 +72,14 @@ namespace Приемная_комиссия
                 nam.Text = null;
                 flag = false;
                 nam.Foreground = Brushes.Black;
+            }
+        }
+
+        private void nam_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+            {
+                e.Handled = true;
             }
         }
 

@@ -341,5 +341,89 @@ namespace Приемная_комиссия
                  MessageBox.Show("Не все поля заполнены");
             }
         }
+
+        private void ege_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ege_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void f_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void log_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (log.Text == "")
+            {
+                log.Text = "Введите логин";
+                log.Foreground = new SolidColorBrush(Color.FromArgb(255, 121, 120, 120));
+                flags[7] = true;
+            }
+        }
+
+        private void f_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (f.Text == "")
+            {
+                f.Text = "Фамилия";
+                f.Foreground = new SolidColorBrush(Color.FromArgb(255, 121, 120, 120));
+                flags[1] = true;
+            }
+        }
+
+        private void i_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (i.Text == "")
+            {
+                i.Text = "Имя";
+                i.Foreground = new SolidColorBrush(Color.FromArgb(255, 121, 120, 120));
+                flags[2] = true;
+            }
+        }
+
+        private void o_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (o.Text == "")
+            {
+                o.Text = "Отчество";
+                o.Foreground = new SolidColorBrush(Color.FromArgb(255, 121, 120, 120));
+                flags[3] = true;
+            }
+        }
+
+        private void p_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (p.Text == "")
+            {
+                p.Text = "Паспортные данные";
+                p.Foreground = new SolidColorBrush(Color.FromArgb(255, 121, 120, 120));
+                flags[4] = true;
+            }
+        }
+
+        private void ege_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (ege.Text == "")
+            {
+                ege.Text = "Сумма баллов ЕГЭ";
+                ege.Foreground = new SolidColorBrush(Color.FromArgb(255, 121, 120, 120));
+                flags[5] = true;
+            }
+        }
     }
 }

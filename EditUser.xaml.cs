@@ -39,21 +39,28 @@ namespace Приемная_комиссия
             {
                 using (PCEntities1 db = new PCEntities1())
                 {
-                    User u = null;
-                    foreach (var us in db.User)
+                    try
                     {
-                        if (us.IDUser == this.user.IDUser)
+                        User u = null;
+                        foreach (var us in db.User)
                         {
-                            u = db.User.Find(us.IDUser);
-                            break;
+                            if (us.IDUser == this.user.IDUser)
+                            {
+                                u = db.User.Find(us.IDUser);
+                                break;
+                            }
                         }
+                        u.Login = l.Text;
+                        u.Password = p.Text;
+                        db.SaveChanges();
+                        System.Windows.MessageBox.Show("Сохранено");
+                        admin.New();
+                        this.Close();
                     }
-                    u.Login = l.Text;
-                    u.Password = p.Text;
-                    db.SaveChanges();
-                    System.Windows.MessageBox.Show("Сохранено");
-                    admin.New();
-                    this.Close();
+                    catch
+                    {
+                        MessageBox.Show("Неверно введены данные");
+                    }
                 }
             }
             else
@@ -67,7 +74,7 @@ namespace Приемная_комиссия
             {
                 using (PCEntities1 db = new PCEntities1())
                 {
-                    User u = null;
+                    User u = db.User.Find(user.IDUser);
                     Entrant entrant = null;
                     foreach (var en in db.Entrant)
                     {
@@ -77,30 +84,37 @@ namespace Приемная_комиссия
                             break;
                         }
                     }
-                    foreach (var us in db.User)
+                    if(entrant != null)
                     {
-                        if (us.IDUser == this.user.IDUser)
+                        foreach (var l in db.List)
                         {
-                            u = db.User.Find(us.IDUser);
-                            break;
+                            List list = null;
+                            if (l.IDEntrant == entrant.IDEntrant)
+                            {
+                                list = db.List.Find(l.IDList);
+                                db.List.Remove(list);
+                            }
                         }
                     }
-                    foreach (var l in db.List)
+                    try
                     {
-                        List list = null;
-                        if (l.IDEntrant == entrant.IDEntrant)
-                        {
-                            list = db.List.Find(l.IDList);
-                            db.List.Remove(list);
-                        }
+                        db.Entrant.Remove(entrant);
                     }
-                    db.Entrant.Remove(entrant);
+                    catch { }
                     db.User.Remove(u);
                     db.SaveChanges();
                     MessageBox.Show("Успешно удалено");
                     admin.New();
                     this.Close();
                 }
+            }
+        }
+
+        private void l_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
             }
         }
     }

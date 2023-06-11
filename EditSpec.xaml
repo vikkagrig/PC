@@ -56,13 +56,13 @@
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox Text="Название" TextWrapping="Wrap" x:Name="name" Height="40"/>
-            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="code"/>
-            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="but"/>
-            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="comm"/>
-            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="dur"/>
-            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="mark"/>
-            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="cost"/>
+            <TextBox Text="Название" TextWrapping="Wrap" x:Name="name" Height="40" PreviewTextInput="name_PreviewTextInput"/>
+            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="code" PreviewKeyDown="code_PreviewKeyDown" PreviewTextInput="code_PreviewTextInput_1"/>
+            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="but" PreviewKeyDown="code_PreviewKeyDown" PreviewTextInput="code_PreviewTextInput"/>
+            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="comm" PreviewKeyDown="code_PreviewKeyDown" PreviewTextInput="code_PreviewTextInput"/>
+            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="dur" PreviewKeyDown="code_PreviewKeyDown" PreviewTextInput="code_PreviewTextInput"/>
+            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="mark" PreviewKeyDown="code_PreviewKeyDown" PreviewTextInput="code_PreviewTextInput"/>
+            <TextBox TextWrapping="Wrap" Text="Описание" x:Name="cost" PreviewKeyDown="code_PreviewKeyDown" PreviewTextInput="code_PreviewTextInput"/>
             <Button Click="Button_Click">
                 <Button.Content>
                     <TextBlock Text="Сохранить" Margin="2"/>

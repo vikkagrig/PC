@@ -32,38 +32,45 @@ namespace Приемная_комиссия
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(code.Text.Trim() != "" && name.Text.Trim() != "" && but.Text.Trim() != "" && comm.Text.Trim() != "" && dur.Text.Trim() != "" && mark.Text.Trim() != "" &&
+            try
+            {
+                if (code.Text.Trim() != "" && name.Text.Trim() != "" && but.Text.Trim() != "" && comm.Text.Trim() != "" && dur.Text.Trim() != "" && mark.Text.Trim() != "" &&
                 cost.Text.Trim() != "" && int.Parse(but.Text.Trim()) > 0 && int.Parse(but.Text.Trim()) < 10000 && int.Parse(comm.Text.Trim()) > 0 &&
                 int.Parse(comm.Text.Trim()) < 1000 && int.Parse(dur.Text.Trim()) > 0 && int.Parse(dur.Text.Trim()) < 50 && int.Parse(mark.Text.Trim()) > 0 && int.Parse(mark.Text.Trim()) < 500 && int.Parse(cost.Text.Trim()) > 0)
-            {
-                using(PCEntities1 db = new PCEntities1())
                 {
-                    try
+                    using (PCEntities1 db = new PCEntities1())
                     {
-                        Spaciality spaciality = new Spaciality()
+                        try
                         {
-                            Name = name.Text,
-                            Code = code.Text,
-                            PlaceBudget = int.Parse(but.Text),
-                            PlaceCommerce = int.Parse(comm.Text),
-                            Duration = int.Parse(dur.Text),
-                            Mark = int.Parse(mark.Text),
-                            Cost = int.Parse(cost.Text),
-                            IDFac = idf
-                        };
-                        db.Spaciality.Add(spaciality);
-                        db.SaveChanges();
-                        MessageBox.Show("Успешно добавлено");
-                        admin.NewSpec(admin.inst.SelectedIndex);
-                        this.Close();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Неверно введены даннеые");
+                            Spaciality spaciality = new Spaciality()
+                            {
+                                Name = name.Text,
+                                Code = code.Text,
+                                PlaceBudget = int.Parse(but.Text),
+                                PlaceCommerce = int.Parse(comm.Text),
+                                Duration = int.Parse(dur.Text),
+                                Mark = int.Parse(mark.Text),
+                                Cost = int.Parse(cost.Text),
+                                IDFac = idf
+                            };
+                            db.Spaciality.Add(spaciality);
+                            db.SaveChanges();
+                            MessageBox.Show("Успешно добавлено");
+                            admin.NewSpec(admin.inst.SelectedIndex);
+                            this.Close();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Неверно введены даннеые");
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Не все поля заполнены");
+                }
             }
-            else
+            catch
             {
                 MessageBox.Show("Не все поля заполнены");
             }
@@ -136,6 +143,35 @@ namespace Приемная_комиссия
                 cost.Text = null;
                 flags[6] = false;
                 cost.Foreground = Brushes.Black;
+            }
+        }
+
+        private void code_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void name_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void code_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "0123456789.".IndexOf(e.Text) < 0;
+        }
+
+        private void but_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
             }
         }
     }

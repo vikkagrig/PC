@@ -97,7 +97,27 @@ namespace Приемная_комиссия
                 log.Text = null;
                 flag = true;
                 log.Foreground = Brushes.Black;
-            }   
+            }
+            if(pas.Password != "" && pas1.Text == "" && pas1.Visibility == Visibility.Visible)
+            {
+                pas.Password = "";
+            }
+            if((pas.Password == "" && pas1.Text == "") || (pas1.Text != "" && pas.Password == ""))
+            {
+                if (pas.Password != "")
+                    pas.Password = "";
+                flag1 = false;
+                pas.Visibility = Visibility.Hidden;
+                pas1.Text = "Пароль";
+                pas1.Foreground = new SolidColorBrush(Color.FromArgb(255, 121, 120, 120));
+                pas1.Visibility = Visibility.Visible;
+                pas1.Width = 480;
+                pas.Width = 0;
+                im2.Width = 0;
+                im2.Visibility = Visibility.Hidden;
+                im1.Width = 30;
+                im1.Visibility = Visibility.Visible;
+            }
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
@@ -115,6 +135,24 @@ namespace Приемная_комиссия
             pas1.Foreground = Brushes.Black;
             pas1.SelectionStart = pas1.Text.Length;
             pas1.Focus();
+        }
+
+        private void log_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void log_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if(log.Text == "")
+            {
+                log.Text = "Логин";
+                log.Foreground = new SolidColorBrush(Color.FromArgb(255, 121, 120, 120));
+                flag = false;
+            }
         }
 
         private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)

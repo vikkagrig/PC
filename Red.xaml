@@ -77,12 +77,12 @@
             <StackPanel.Effect>
                 <DropShadowEffect BlurRadius="70" Opacity="0.7" ShadowDepth="0"/>
             </StackPanel.Effect>
-            <TextBox x:Name="f" Text="Фамилия" Margin="5 10 5 5"/>
-            <TextBox x:Name="i" Text="Имя" />
-            <TextBox x:Name="o" Text="Отчество" />
+            <TextBox x:Name="f" Text="Фамилия" Margin="5 10 5 5" PreviewKeyDown="f_PreviewKeyDown" PreviewTextInput="f_PreviewTextInput"/>
+            <TextBox x:Name="i" Text="Имя" PreviewKeyDown="f_PreviewKeyDown" PreviewTextInput="f_PreviewTextInput"/>
+            <TextBox x:Name="o" Text="Отчество" PreviewKeyDown="f_PreviewKeyDown" PreviewTextInput="f_PreviewTextInput"/>
             <DatePicker x:Name="d" SelectedDateFormat="Short" DisplayDate="01.01.2005"/>
-            <TextBox x:Name="p" Text="Паспортные данные" />
-            <TextBox x:Name="ege" Text="Сумма баллов ЕГЭ"/>
+            <TextBox x:Name="p" Text="Паспортные данные" MaxLength="10" PreviewKeyDown="f_PreviewKeyDown" PreviewTextInput="ege_PreviewTextInput"/>
+            <TextBox x:Name="ege" Text="Сумма баллов ЕГЭ" PreviewKeyDown="f_PreviewKeyDown" PreviewTextInput="ege_PreviewTextInput"/>
             <StackPanel Orientation="Horizontal">
                 <Button Click="Button_Click" Margin="5 0 15 0" Background="White" BorderThickness="1">
                     <Button.Content>

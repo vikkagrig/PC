@@ -77,25 +77,25 @@
             <StackPanel.Effect>
                 <DropShadowEffect BlurRadius="70" Opacity="0.7" ShadowDepth="0"/>
             </StackPanel.Effect>
-            <TextBox x:Name="log" Text="Введите логин" GotFocus="log_GotFocus" Margin="5 10 5 5"/>
+            <TextBox x:Name="log" Text="Введите логин" GotFocus="log_GotFocus" Margin="5 10 5 5" PreviewKeyDown="ege_PreviewKeyDown" LostFocus="log_LostFocus"/>
             <StackPanel Margin="5" Orientation="Horizontal">
-                <TextBox x:Name="pas1" Width="480" Margin="0" Text="Придумайте пароль" GotFocus="pas1_GotFocus"/>
-                <PasswordBox x:Name="pas" Visibility="Hidden" Margin="0" Width="0"/>
+                <TextBox x:Name="pas1" Width="480" Margin="0" Text="Придумайте пароль" GotFocus="pas1_GotFocus" PreviewKeyDown="ege_PreviewKeyDown"/>
+                <PasswordBox x:Name="pas" Visibility="Hidden" Margin="0" Width="0" PreviewKeyDown="ege_PreviewKeyDown"/>
                 <Image Source="/hide.png" Width="30" MouseDown="im1_MouseDown" x:Name="im1"/>
                 <Image Source="/show.png" Width="0" Visibility="Hidden" MouseDown="im2_MouseDown" x:Name="im2"/>
             </StackPanel>
             <StackPanel Margin="5" Orientation="Horizontal">
-                <TextBox x:Name="pas3" Width="480" Margin="0" Text="Повторите пароль" GotFocus="pas3_GotFocus"/>
-                <PasswordBox x:Name="pas2" Visibility="Hidden" Margin="0" Width="0"/>
+                <TextBox x:Name="pas3" Width="480" Margin="0" Text="Повторите пароль" GotFocus="pas3_GotFocus" PreviewKeyDown="ege_PreviewKeyDown"/>
+                <PasswordBox x:Name="pas2" Visibility="Hidden" Margin="0" Width="0" PreviewKeyDown="ege_PreviewKeyDown"/>
                 <Image Source="/hide.png" Width="30" MouseDown="im3_MouseDown" x:Name="im3"/>
                 <Image Source="/show.png" Width="0" Visibility="Hidden" MouseDown="im4_MouseDown" x:Name="im4"/>
             </StackPanel>
-            <TextBox x:Name="f" Text="Фамилия" GotFocus="f_GotFocus"/>
-            <TextBox x:Name="i" Text="Имя" GotFocus="i_GotFocus"/>
-            <TextBox x:Name="o" Text="Отчество" GotFocus="o_GotFocus"/>
-            <DatePicker x:Name="d" GotFocus="d_GotFocus" SelectedDateFormat="Short"/>
-            <TextBox x:Name="p" Text="Паспортные данные" GotFocus="p_GotFocus"/>
-            <TextBox x:Name="ege" Text="Сумма баллов ЕГЭ" GotFocus="ege_GotFocus"/>
+            <TextBox x:Name="f" Text="Фамилия" GotFocus="f_GotFocus" PreviewKeyDown="ege_PreviewKeyDown" PreviewTextInput="f_PreviewTextInput" LostFocus="f_LostFocus"/>
+            <TextBox x:Name="i" Text="Имя" GotFocus="i_GotFocus" PreviewKeyDown="ege_PreviewKeyDown" PreviewTextInput="f_PreviewTextInput" LostFocus="i_LostFocus"/>
+            <TextBox x:Name="o" Text="Отчество" GotFocus="o_GotFocus" PreviewKeyDown="ege_PreviewKeyDown" PreviewTextInput="f_PreviewTextInput" LostFocus="o_LostFocus"/>
+            <DatePicker x:Name="d" GotFocus="d_GotFocus" SelectedDateFormat="Short" DisplayDate="01.01.2005"/>
+            <TextBox x:Name="p" Text="Паспортные данные" GotFocus="p_GotFocus" PreviewKeyDown="ege_PreviewKeyDown" PreviewTextInput="ege_PreviewTextInput" MaxLength="10" LostFocus="p_LostFocus"/>
+            <TextBox x:Name="ege" Text="Сумма баллов ЕГЭ" GotFocus="ege_GotFocus" PreviewTextInput="ege_PreviewTextInput" PreviewKeyDown="ege_PreviewKeyDown" LostFocus="ege_LostFocus"/>
             <StackPanel Orientation="Horizontal">
                 <Button Click="Button_Click" Margin="5 0 15 0" Background="White" BorderThickness="1">
                     <Button.Content>

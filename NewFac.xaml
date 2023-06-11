@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Приемная_комиссия"
         mc:Ignorable="d" Icon="/graduation_hat_graduate_university_school_icon_193302.png"
-        Title="Новый факультет" Height="200" Width="250">
+        Title="Новый факультет" Height="300" Width="450">
     <Window.Background>
         <LinearGradientBrush>
             <GradientStop Color="#FFEBEBF3" Offset="0" />
@@ -16,14 +16,15 @@
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="#FF09222E"/>
             <Setter Property="FontFamily" Value="Montserrat"/>
-            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="0 2"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="FontFamily" Value="Montserrat"/>
-            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="2"/>
+            <Setter Property="Width" Value="250"/>
             <Setter Property="Background" Value="#FFEAEAEA"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
@@ -38,12 +39,12 @@
             <Setter Property="Width" Value="170"/>
         </Style>
         <Style TargetType="TextBox">
-            <Setter Property="Foreground" Value="#FF797878"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontFamily" Value="Montserrat"/>
-            <Setter Property="FontSize" Value="10"/>
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="Width" Value="150"/>
-            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="40"/>
             <Setter Property="BorderThickness" Value="0, 0, 0, 1"/>
             <Style.Triggers>
                 <Trigger Property="IsFocused" Value="True">
@@ -54,8 +55,8 @@
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox Text="Название" TextWrapping="Wrap" GotFocus="TextBox_GotFocus" x:Name="nam"/>
-            <TextBox TextWrapping="Wrap" Text="Описание" Height="60" GotFocus="TextBox_GotFocus_1" x:Name="des"/>
+            <TextBox Text="Название" TextWrapping="Wrap" GotFocus="TextBox_GotFocus" x:Name="nam" PreviewTextInput="nam_PreviewTextInput"/>
+            <TextBox TextWrapping="Wrap" Text="Описание" Height="90" GotFocus="TextBox_GotFocus_1" x:Name="des"/>
             <Button Click="Button_Click">
                 <Button.Content>
                     <TextBlock Text="Добавить" Margin="2"/>

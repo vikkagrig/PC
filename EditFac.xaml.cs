@@ -82,25 +82,40 @@ namespace Приемная_комиссия
             {
                 using (PCEntities1 db = new PCEntities1())
                 {
-                    Faculty f = null;
-                    foreach (var en in db.Faculty)
+                    try
                     {
-                        if (en.IDFac == this.faculty.IDFac)
+                        Faculty f = null;
+                        foreach (var en in db.Faculty)
                         {
-                            f = db.Faculty.Find(en.IDFac);
-                            break;
+                            if (en.IDFac == this.faculty.IDFac)
+                            {
+                                f = db.Faculty.Find(en.IDFac);
+                                break;
+                            }
                         }
+                        f.Name = nam.Text;
+                        f.Description = des.Text;
+                        db.SaveChanges();
+                        MessageBox.Show("Сохранено");
+                        admin.NewData();
+                        this.Close();
                     }
-                    f.Name = nam.Text;
-                    f.Description = des.Text;
-                    db.SaveChanges();
-                    MessageBox.Show("Сохранено");
-                    admin.NewData();
-                    this.Close();
+                    catch
+                    {
+                        MessageBox.Show("Неверно введены данные");
+                    }
                 }
             }
             else
                 MessageBox.Show("Не все поля заполнены");
+        }
+
+        private void nam_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

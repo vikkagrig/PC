@@ -55,8 +55,8 @@
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox Text="Логин" TextWrapping="Wrap" x:Name="l"/>
-            <TextBox TextWrapping="Wrap" Text="Пароль" x:Name="p"/>
+            <TextBox Text="Логин" TextWrapping="Wrap" x:Name="l" PreviewKeyDown="l_PreviewKeyDown"/>
+            <TextBox TextWrapping="Wrap" Text="Пароль" x:Name="p" PreviewKeyDown="l_PreviewKeyDown"/>
             <Button Click="Button_Click">
                 <Button.Content>
                     <TextBlock Text="Сохранить" Margin="2"/>

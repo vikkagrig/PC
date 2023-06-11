@@ -63,10 +63,10 @@
             <StackPanel.Effect>
                 <DropShadowEffect BlurRadius="70" Opacity="0.7" ShadowDepth="0"/>
             </StackPanel.Effect>
-            <TextBox x:Name="log" Text="Логин" GotFocus="log_GotFocus"/>
+            <TextBox x:Name="log" Text="Логин" GotFocus="log_GotFocus" PreviewKeyDown="log_PreviewKeyDown" LostFocus="log_LostFocus"/>
             <StackPanel Margin="15" Orientation="Horizontal">
-                <TextBox x:Name="pas1" Width="480" Margin="0" Text="Пароль" GotFocus="pas1_GotFocus"/>
-                <PasswordBox x:Name="pas" Visibility="Hidden" Margin="0" Width="0"/>
+                <TextBox x:Name="pas1" Width="480" Margin="0" Text="Пароль" GotFocus="pas1_GotFocus" PreviewKeyDown="log_PreviewKeyDown"/>
+                <PasswordBox x:Name="pas" Visibility="Hidden" Margin="0" Width="0" PreviewKeyDown="log_PreviewKeyDown"/>
                 <Image Source="/hide.png" Width="30" MouseDown="Image_MouseDown" x:Name="im1"/>
                 <Image Source="/show.png" Width="0" Visibility="Hidden" MouseDown="Image_MouseDown_1" x:Name="im2"/>
             </StackPanel>

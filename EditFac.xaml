@@ -55,14 +55,14 @@
     </Window.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox Text="Название" TextWrapping="Wrap" x:Name="nam"/>
+            <TextBox Text="Название" TextWrapping="Wrap" x:Name="nam" PreviewTextInput="nam_PreviewTextInput"/>
             <TextBox TextWrapping="Wrap" Text="Описание" Height="90" x:Name="des"/>
-            <Button Click="Button_Click_1">
+            <Button Click="Button_Click_1" Name="soxr">
                 <Button.Content>
-                    <TextBlock Text="Сохранить" Margin="2"/>
+                    <TextBlock Text="Сохранить" Margin="2" x:Name="textbtn"/>
                 </Button.Content>
             </Button>
-            <Button Click="Button_Click">
+            <Button Click="Button_Click" x:Name="del">
                 <Button.Content>
                     <TextBlock Text="Удалить" Margin="2"/>
                 </Button.Content>
